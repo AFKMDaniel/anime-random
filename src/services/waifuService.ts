@@ -1,4 +1,6 @@
-import { IWaifuList } from '@/types/waifuTypes';
+interface IWaifuList {
+  files: string[];
+}
 
 export default class WaifuService {
   static async getList(): Promise<IWaifuList> {
@@ -10,7 +12,7 @@ export default class WaifuService {
       },
       mode: 'cors',
       body: JSON.stringify({}),
-      next: { revalidate: 600 }
+      next: { revalidate: 600 },
     });
     return response.json();
   }
