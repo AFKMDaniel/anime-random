@@ -8,7 +8,7 @@ export default function Button({
   return (
     <button
       className={
-        'border-2 rounded bg-white p-2 border-green-600 text-black text-base ' +
+        'border-2 rounded bg-green-600 p-2 border-black text-white text-base ' +
         (className || '')
       }
       {...props}
