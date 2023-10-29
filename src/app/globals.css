@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.anim-delay-100 {
-  animation-delay: 200ms;
-}
-
-.anim-delay-200 {
-  animation-delay: 400ms;
-}
-
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

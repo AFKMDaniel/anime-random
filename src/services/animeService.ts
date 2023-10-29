@@ -5,7 +5,6 @@ export default class AnimeService {
     const response = await fetch('https://api.jikan.moe/v4/random/anime', {
       headers: {
         'Content-Type': 'application/json',
-        // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       mode: 'cors',
       cache: 'no-store',
@@ -18,7 +17,6 @@ export default class AnimeService {
     const response = await fetch(`https://api.jikan.moe/v4/anime/${id}`, {
       headers: {
         'Content-Type': 'application/json',
-        // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       mode: 'cors',
     });
