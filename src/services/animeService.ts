@@ -7,7 +7,7 @@ export default class AnimeService {
         'Content-Type': 'application/json',
       },
       mode: 'cors',
-      cache: 'no-store',
+      next: { tags: ['random'] },
     });
     if (!response.ok) throw new Error('fetch error');
     return response.json();

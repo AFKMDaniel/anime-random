@@ -1,8 +1,7 @@
-import { headers } from 'next/headers';
-import HistoryService from '@/services/historyService';
+import HistoryService from "@/services/historyService";
 
 export default async function Page() {
-  const data = await HistoryService.getList(headers());
+  const data = await HistoryService.getList();
 
   return (
     <main>
