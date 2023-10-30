@@ -3,7 +3,7 @@ import React from 'react';
 import ButtonLink from '@/components/UI/buttonLink';
 import SignInButton from '@/components/signInButton';
 import { getServerSession } from 'next-auth/next';
-import PickOneButton from '@/components/pickOneButton';
+import FilledButtonLink from '@/components/UI/filledButtonLink';
 
 export default async function StartBlock() {
   const session = await getServerSession();
@@ -19,9 +19,9 @@ export default async function StartBlock() {
               Nothing to watch? Pick up a random anime! <br />
             </p>
             <div>
-              <PickOneButton className='-ml-2 mr-2'>
+              <FilledButtonLink className='-ml-2 mr-2' href='/random'>
                 PICK ONE!
-              </PickOneButton>
+              </FilledButtonLink>
               {!session ? (
                 <SignInButton />
               ) : (

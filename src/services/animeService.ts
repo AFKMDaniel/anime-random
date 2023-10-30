@@ -7,7 +7,6 @@ export default class AnimeService {
         'Content-Type': 'application/json',
       },
       mode: 'cors',
-      next: { tags: ['random'] },
     });
     if (!response.ok) throw new Error('fetch error');
     return response.json();
@@ -19,6 +18,7 @@ export default class AnimeService {
         'Content-Type': 'application/json',
       },
       mode: 'cors',
+      next: {revalidate: 3600}
     });
     return response.json();
   }

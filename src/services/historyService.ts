@@ -1,42 +1,23 @@
-import dbConnect from '@/lib/dbConnect';
-import HistoryItem from '@/models/historyItem';
-import { IHistoryBody, IHistoryDocument } from '@/types/historyTypes';
-import { getServerSession } from 'next-auth/next';
+import { IHistoryBody } from '@/types/historyTypes';
 
 export default class HistoryService {
-  static async getList() {
-    await dbConnect();
-
-    const session = await getServerSession();
-    if (!session) throw new Error('not authorized');
-
-    const data: IHistoryDocument[] = await HistoryItem.find({
-      email: session?.user?.email,
+  static async getList(): Promise<IHistoryBody[]> {
+    const response = await fetch('/api/history', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
-
-    const result: IHistoryBody[] = data.map(({ title, images, mal_id }) => {
-      return {
-        title,
-        images,
-        mal_id,
-      };
-    });
-    return result;
+    return response.json();
   }
 
-  static async writeItem(data: IHistoryBody): Promise<void> {
-    await dbConnect();
-
-    const session = await getServerSession();
-    if (!session) return;
-
-    const historyItem: IHistoryDocument = new HistoryItem({
-      email: session?.user?.email!,
-      mal_id: data.mal_id,
-      title: data.title,
-      images: data.images,
+  static async writeItem(data: IHistoryBody): Promise<{ message: string }> {
+    const response = await fetch('/api/history', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
     });
-
-    await historyItem.save();
+    return response.json();
   }
 }
